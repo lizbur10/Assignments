@@ -99,7 +99,7 @@ textarea {
 body {
     width: 960px;
     margin: 50px auto;
-    font-family: sans-serif;
+    font-family: Tahoma, Geneva, sans-serif;
     color: purple;
     background-color: white;
 }
@@ -117,14 +117,14 @@ h1 {
     -moz-box-shadow: 10px 10px 5px #888888;
     box-shadow: 10px 10px 5px #888888;
     position: relative;
-  background: linear-gradient(
-    to bottom,
-    white,
-    white 95%,
-    #ccff00 5%,
-    #ccff00
-  );
-  background-size: 100% 40px;
+    background: linear-gradient(
+      to bottom,
+      white,
+      white 95%,
+      #ccff00 5%,
+      #ccff00
+    );
+    background-size: 100% 40px;
 }
 
 .flashcard img {

@@ -1,4 +1,4 @@
-/*Browser specific fixes for IE 8 */
+/*Browser specific fixes for IE 8. It ain't pretty but it doesn't look blatantly broken. There's gotta be a better way... */
 
 .flashcard {
 	text-align: center;
@@ -8,7 +8,6 @@
 	display: inline-block;
 	position: static;
 	padding-top: 30px;
-
 }
 
 .question {
