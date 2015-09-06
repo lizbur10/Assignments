@@ -1,0 +1,19 @@
+/*Browser specific fixes for IE 8 */
+
+.flashcard {
+	text-align: center;
+}
+
+.flashcard img {
+	display: inline-block;
+	position: static;
+	padding-top: 30px;
+
+}
+
+.question {
+    font-size: 20px;
+	position: absolute;
+    top: 75%;
+    left: 40%;
+}
