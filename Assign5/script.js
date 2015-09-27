@@ -1,5 +1,5 @@
 // JSJQ Assignment #5, Deciding with Data
-// Modified: 9/26/15      Authors: Ashby Utting & Liz Burton
+// Modified: 9/27/15      Authors: Ashby Utting & Liz Burton
 
 
 
@@ -45,14 +45,14 @@ var churchillIndex, ghandiIndex, demosthenesIndex;
 
 
 //Function to write out favorite author information
-function WriteFavoriteAuthor(index) {
+function writeFavoriteAuthor(index) {
   console.log(speechesArray[index].author + " was " + speechesArray[index].authorAge + " during this speech.");
 }
 
 
 
 // Function to show the information for each speech (called when the "author" buttons are clicked)
-function ShowSpeechInfo(index) {
+function showSpeechInfo(index) {
     console.log("This speech was written by " + speechesArray[index].author + " in " + speechesArray[index].year + ".");
   if (speechesArray[index].yearIsBCE)
     console.log("This speech took place before the common era.");
@@ -62,17 +62,18 @@ function ShowSpeechInfo(index) {
 
 
 //Function to determine whether the current speech is oldest/newest and display the appropriate message
-  function CompareYears(index) {
-    var oldest = true, newest = true, rescaleYear = [0,0,0];
+  function compareYears(index) {
+    var oldest = true, newest = true, rescaleYear = [0, 0, 0];
 
-    //resets the year to a negative value if the speech is BCE
+    //resets the year to a negative value if the speech is BCE 
+    // Note: this would be important if other speeches were going to be added; in this case, it's just for fun
     for (j=0; j<speechesArray.length; j++) {
       if (speechesArray[j].yearIsBCE)
         rescaleYear[j] = -speechesArray[j].year;
       else
         rescaleYear[j] = speechesArray[j].year;
     }
-    //determines oldest/newest
+    //Compares the selected speech's year to the others to determine if it is oldest or newest
     for (i=0; i<rescaleYear.length; i++) {
       if (rescaleYear[index] < rescaleYear[i])
         newest = false;
@@ -91,8 +92,8 @@ function ShowSpeechInfo(index) {
 //Ask for the user's name - runs when the page loads
 user = window.prompt("Please enter your name.");
 
-  if(typeof user === "string" && user.length > 0) //If a number is entered, it looks like JS automatically converts it to a string so the 
-    console.log("Hi " + user + "!");              //typeof part of the if statement doesn't really do anything. Not sure how to get around that.
+  if(typeof user === "string" && user.length > 0) //If a number is entered, it looks like JS automatically converts it to a string 
+    console.log("Hi " + user + "!");              //so the typeof part of the if statement doesn't really do anything. 
   else
     console.log("Okay, I'll just call you User");
 
@@ -102,21 +103,21 @@ user = window.prompt("Please enter your name.");
 
   // Donate button
   document.getElementById('BtnDonate').addEventListener('click', function(){
-    favoriteAuthor = window.prompt("Who is your favorite author -- Churchill, Ghandi, or Demosthenes?");
+    favoriteAuthor = window.prompt("Who is your favorite author: Churchill, Ghandi, or Demosthenes?");
     favoriteAuthor = favoriteAuthor.toLowerCase();
 
       switch (favoriteAuthor) {
 
         case "churchill":
-          WriteFavoriteAuthor(churchillIndex);
+          writeFavoriteAuthor(churchillIndex);
         break;
 
         case "ghandi":
-          WriteFavoriteAuthor(ghandiIndex);
+          writeFavoriteAuthor(ghandiIndex);
         break;
 
         case "demosthenes":
-          WriteFavoriteAuthor(demosthenesIndex);
+          writeFavoriteAuthor(demosthenesIndex);
         break;
 
         default:
@@ -127,18 +128,18 @@ user = window.prompt("Please enter your name.");
 
   // Churchill button
   document.getElementById('BtnChurchill').addEventListener('click', function(){
-    ShowSpeechInfo(churchillIndex);
-    CompareYears(churchillIndex);
+    showSpeechInfo(churchillIndex);
+    compareYears(churchillIndex);
   });
 
   // Ghandi button
   document.getElementById('BtnGhandi').addEventListener('click', function(){
-    ShowSpeechInfo(ghandiIndex);
-    CompareYears(ghandiIndex);
+    showSpeechInfo(ghandiIndex);
+    compareYears(ghandiIndex);
   });
 
   // Demosthenes button
   document.getElementById('BtnDemosthenes').addEventListener('click', function(){
-    ShowSpeechInfo(demosthenesIndex);
-    CompareYears(demosthenesIndex);
+    showSpeechInfo(demosthenesIndex);
+    compareYears(demosthenesIndex);
   });
