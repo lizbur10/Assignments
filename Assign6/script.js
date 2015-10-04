@@ -23,7 +23,6 @@ var churchillSpeech = {
       'authorAge': '42'
     },
     speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
-    userNamePrompt,
     favoriteSpeechPrompt,
     oldestYear, mostRecentYear;
 
@@ -91,14 +90,15 @@ while (i<speechesArray.length){
     favoriteSpeechPrompt = window.prompt('Which speech author is your favorite?');
 
 
-    var found = false;
+
     for (i=0; i<speechesArray.length; i++) {
       if (favoriteSpeechPrompt === speechesArray[i].author) {
         console.log(speechesArray[i].author + " was " + speechesArray[i].authorAge + " during this speech.");
-        found = true;
-      }
+        break;
+      } else if (i === (speechesArray.length - 1)) {                            //if the author still hasn't been found by the last time
+        console.log("Sorry - I do not recognize that name. Pease try again.");   //through the loop the error message will be displayed
     }
-    if (!found) console.log("Sorry - I do not recognize that name. Pease check your spelling and capitalization.");
+  }
 
   });
 
