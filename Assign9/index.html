@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>What time is it?</title>
+    <style>
+    #timeToggle {
+        max-width: 150px;
+        padding-top: 10px;
+        height: 25px;
+        border: 1px solid black;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: center;
+        font-size: .9em;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <h1>What time is it?</h1>
+    <p id="time-query">What time is it?</p>
+    <div id="timeToggle">Switch to 12hr time</div>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+ 
+    var timeDisplayType = "24hr";
+
+    function tellTime(timeDisplayType) {   // http://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
+        var currentTime = new Date();
+        var twentyFourHourTime = currentTime.getHours() + ":" + ((currentTime.getMinutes() < 10)?"0":"") + currentTime.getMinutes();
+        var twelveHourTime = ((currentTime.getHours() > 12)?(currentTime.getHours()-12):(currentTime.getHours())) + ":" + 
+                    ((currentTime.getMinutes() < 10)?"0":"") + currentTime.getMinutes();
+
+        return function() {
+            if (timeDisplayType == "24hr") {     
+                document.getElementById("time-query").innerHTML = "You accessed this page on " + (currentTime.getMonth() + 1) + 
+                    "/" + currentTime.getDate() + "/" + currentTime.getFullYear() + " at " + twentyFourHourTime + ".";
+            } else {
+                document.getElementById("time-query").innerHTML = "You accessed this page on " + (currentTime.getMonth() + 1) + 
+                    "/" + currentTime.getDate() + "/" + currentTime.getFullYear() + " at " + twelveHourTime + 
+                    ((currentTime.getHours() < 12)?" AM":" PM") + ".";            
+            }
+        }
+    }
+ 
+    $( document ).ready(tellTime(timeDisplayType));
+
+    $( "#timeToggle" ).click(function (event) {
+        this.innerHTML = "Switch to " + timeDisplayType + " time";
+        if (timeDisplayType == "12hr") { 
+            timeDisplayType = "24hr";
+        } else {
+            timeDisplayType = "12hr";
+        }
+        $(tellTime(timeDisplayType));
+        });
+
+    </script>
+</body>
+</html>
