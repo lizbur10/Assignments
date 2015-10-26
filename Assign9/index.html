@@ -34,12 +34,11 @@
 
         return function() {
             if (timeDisplayType == "24hr") {     
-                document.getElementById("time-query").innerHTML = "You accessed this page on " + (currentTime.getMonth() + 1) + 
-                    "/" + currentTime.getDate() + "/" + currentTime.getFullYear() + " at " + twentyFourHourTime + ".";
+                document.getElementById("time-query").innerHTML = "The current time is " + twentyFourHourTime + " on " +
+                (currentTime.getMonth() + 1) + "/" + currentTime.getDate() + "/" + currentTime.getFullYear() + ".";
             } else {
-                document.getElementById("time-query").innerHTML = "You accessed this page on " + (currentTime.getMonth() + 1) + 
-                    "/" + currentTime.getDate() + "/" + currentTime.getFullYear() + " at " + twelveHourTime + 
-                    ((currentTime.getHours() < 12)?" AM":" PM") + ".";            
+                document.getElementById("time-query").innerHTML = "The current time is " + twelveHourTime + 
+                ((currentTime.getHours() < 12)?" AM":" PM") + " on " + (currentTime.getMonth() + 1) + "/" + currentTime.getDate() + "/" + currentTime.getFullYear() + ".";            
             }
         }
     }
