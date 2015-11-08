@@ -208,7 +208,7 @@
 			mobyDickQuoteRandomizer("#content");
 		});
 		//This makes the h2 created by mobyDickQuoteRandomizer clickable. Is there a better way to do this? 
-		$( "#content" ).on( "click", "h2#newH2", function() {
+		$( "#content" ).on( "click", "#newH2", function() {
 			mobyDickQuoteRandomizer("#content");
 		});
 		//Hide the content under a heading when the heading is clicked
@@ -217,7 +217,6 @@
 		});
 		$( "#sidebar h2" ).click(function() {
 			$(this).parent().find("ul").toggleClass("hide-list");
-			$("#quote-button").toggleClass("move-up");
 		});
 	});
 </script>
